@@ -1,22 +1,23 @@
 <div class="row">
     <div class="offset-md-3 col-md-6">
         <h1 class="text-center text-primary my-3">Register</h1>
-        <form>
+        <form (ngSubmit)="onRegister()">
             <div class="form-group">
                 <label for="firstName">First Name</label>
-                <input type="text" class="form-control" id="firstName">
+                <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName">
+                <div>{{ user.firstName }}</div>
             </div>
             <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" id="lastName">
+                <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName">
             </div>
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="email"name="email" aria-describedby="emailHelp" [(ngModel)]="user.email">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Register</button>
         </form>
