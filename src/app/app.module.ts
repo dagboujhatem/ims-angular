@@ -7,10 +7,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Page404Component } from './components/page404/page404.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
+import { CreateProductComponent } from './pages/create-product/create-product.component';
+import { UpdateProductComponent } from './pages/update-product/update-product.component';
+import { ListProductComponent } from './pages/list-product/list-product.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +25,15 @@ import { AboutComponent } from './components/about/about.component';
     Page404Component,
     HomeComponent,
     AboutComponent,
+    CreateProductComponent,
+    UpdateProductComponent,
+    ListProductComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
