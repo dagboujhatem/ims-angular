@@ -1,22 +1,57 @@
 <div class="row">
     <div class="offset-3 col-sm-6">
         <h2 class="text-center my-3 text-primary">Update product info</h2>
-        <form>
+        <form *ngIf="updateForm" [formGroup]="updateForm" (ngSubmit)="updateProduct()">
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Type the product name here">
+                <input type="text" class="form-control" id="name" placeholder="Type the product name here"
+                formControlName="name" [ngClass]="{
+                 'is-valid': submitted && !updateForm.controls['name']?.errors,
+                 'is-invalid': submitted && updateForm.controls['name']?.errors}">
+                <div class="invalid-feedback d-block">
+                    <p *ngIf="submitted && updateForm.controls['name'].hasError('required')">
+                        The name is requied.
+                    </p>
+                    <p *ngIf="submitted && updateForm.controls['name'].hasError('maxlength')">
+                        The name must contain 15 char max.
+                    </p>
+                </div>
+            </div>
+            <div *ngIf="updateForm.controls['subname']" class="form-group">
+                <label for="subname">Sub Name:</label>
+                <input type="text" class="form-control" id="subname" placeholder="Type the product name here"
+                formControlName="subname" [ngClass]="{
+                 'is-valid': submitted && !updateForm.controls['subname']?.errors,
+                 'is-invalid': submitted && updateForm.controls['subname']?.errors}">
+                <div class="invalid-feedback d-block">
+                    <p *ngIf="submitted && updateForm.controls['subname'].hasError('required')">
+                        The sub name is requied.
+                    </p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" id="description" placeholder="Type the description here"></textarea>
+                <textarea class="form-control" id="description" placeholder="Type the description here"
+                formControlName="description"></textarea>
             </div>
-            <div class="form-group">
+            <div *ngIf="updateForm.controls['quantity']" class="form-group">
                 <label for="quantity">Quantity</label>
-                <input type="number" class="form-control" id="quantity" placeholder="Type the quantity here">
+                <input type="number" class="form-control" id="quantity" placeholder="Type the quantity here"
+                formControlName="quantity">
             </div>
             <div class="form-group">
                 <label for="price">Price</label>
-                <input type="text" class="form-control" id="price" placeholder="Type the price here">
+                <input type="text" class="form-control" id="price" placeholder="Type the price here"
+                formControlName="price">
+            </div>
+            <div formArrayName="models">
+                Models : 
+                <button type="button" class="btn btn-primary btn-sm" (click)="addModel()"> + </button>
+                <div class="form-group" *ngFor="let control of models.controls; let i=index">
+                    <label for="price">Model {{i +1}}</label>
+                    <input type="text" class="form-control" id="price" placeholder="Type the name here">
+                    <button type="button" class="btn btn-danger btn-sm" (click)="removeModel(i)"> - </button>
+                </div>
             </div>
             <button type="submit" class="btn btn-success btn-block">Update this product</button>
             <a routerLink="/products" class="btn btn-link btn-block">Cancel</a>

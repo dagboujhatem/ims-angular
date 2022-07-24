@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-create-product',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class CreateProductComponent implements OnInit {
 
   product = {
-    id: 0,
+    id: '',
     name: '',
     description: '',
     quantity: 0,
@@ -24,7 +25,7 @@ export class CreateProductComponent implements OnInit {
     console.log(this.product);
     // ajouter les données dans le localstorage
     let products : any[] =  JSON.parse(localStorage.getItem('products') || "[]")
-    this.product.id = products.length
+    this.product.id =  uuid.v4() // Date.now()
     products.push(this.product);
     localStorage.setItem('products', JSON.stringify(products))
     // navigate to list product
