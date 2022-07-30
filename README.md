@@ -111,7 +111,7 @@ Dans cette séance, nous avons cencentré sur:
 2. Le problème de state managment (dans le cas où y a plusieurs `@Input()`), les solutions possibles: 
     * Data Services (basé sur `RxJS`)
     * NgRx Layer (basé sur `React Redux`)
-    * Autres bibliothèque de gestion du state (i.e ) 
+    * Autres bibliothèque de gestion du state (i.e Akita) 
 3. Création du couche `logique métier` dans un service
     * Création d'un service `ng g s [NOM]`
     * Injection de dépendance dans un composant
