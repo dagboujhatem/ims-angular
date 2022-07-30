@@ -8,6 +8,7 @@ import { AboutComponent } from './components/about/about.component';
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { UpdateProductComponent } from './pages/update-product/update-product.component';
 import { ListProductComponent } from './pages/list-product/list-product.component';
+import { ParentComponent } from './data-sharing/parent/parent.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'create-product', component: CreateProductComponent },
   { path: 'update-product/:id', component: UpdateProductComponent },
   { path: 'products', component: ListProductComponent },
+  { path: 'categories', component: ParentComponent },
   { path: '**', component: Page404Component}
 ];
 

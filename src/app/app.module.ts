@@ -14,6 +14,9 @@ import { AboutComponent } from './components/about/about.component';
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { UpdateProductComponent } from './pages/update-product/update-product.component';
 import { ListProductComponent } from './pages/list-product/list-product.component';
+import { ParentComponent } from './data-sharing/parent/parent.component';
+import { ChildComponent } from './data-sharing/child/child.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,12 +31,15 @@ import { ListProductComponent } from './pages/list-product/list-product.componen
     CreateProductComponent,
     UpdateProductComponent,
     ListProductComponent,
+    ParentComponent,
+    ChildComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
