@@ -20,6 +20,8 @@ const routes: Routes = [
   { path: 'update-product/:id', component: UpdateProductComponent },
   { path: 'products', component: ListProductComponent },
   { path: 'categories', component: ParentComponent },
+  { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
+  { path: 'my-products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
   { path: '**', component: Page404Component}
 ];
 
