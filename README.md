@@ -128,8 +128,7 @@ Dans cette séance, nous avons cencentré sur:
 3. Les pipes personalisé dans Angular.
     * Name pipe
     * Search pipe
-4. Les validations personalisées
-6. Les modules dans Angular: 
+4. Les modules dans Angular: 
     * Shared module
     * Features module (lazy loaded) 
 5. Routing avancée : 
