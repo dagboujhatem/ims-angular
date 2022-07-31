@@ -26,11 +26,15 @@
                         </p>
                     </div>
             </div>
-            <button type="submit" class="btn btn-success btn-block">Create new category</button>
+            <button *ngIf="!isUpdate" type="submit" class="btn btn-success btn-block">Create new category</button>
+            <button *ngIf="isUpdate" (click)="updateCategory()" type="button" class="btn btn-success btn-block">Update category</button>
         </form>
     </div>
 </div>
 
-<app-child [categoriesList]="categories" (deleteEvent)="onDeleteLocal($event)"></app-child>
+<app-child [categoriesList]="categories"
+(deleteEvent)="onDeleteLocal($event)"
+(updateEvent)="onUpdateLocal($event)"
+></app-child>
 
 <!-- {{ categories | json}} -->

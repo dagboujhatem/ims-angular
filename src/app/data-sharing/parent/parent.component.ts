@@ -13,6 +13,8 @@ export class ParentComponent implements OnInit {
   categories : any[]= [];
   categoryForm?: FormGroup;
   submitted = false;
+  isUpdate = false;
+  updateIndex : any;
 
   constructor(private categoriesService: CategoriesService) { }
 
@@ -45,6 +47,31 @@ export class ParentComponent implements OnInit {
     // console.log(i);
     // this.categories.splice(i, 1)
     this.categoriesService.deleteCategory(i)
+  }
+
+  onUpdateLocal(i:any){
+    // console.log(i);
+    const currentCategory = this.categories[i];
+    this.categoryForm?.patchValue(currentCategory);
+    this.isUpdate = true;
+    this.updateIndex = i;
+  }
+
+  updateCategory(){
+    this.submitted = true;
+    if(this.categoryForm?.invalid){
+      return;
+    }
+
+    // update category
+    this.categoriesService.updateCategoryByIndex(this.updateIndex, this.categoryForm?.value)
+    this.categoryForm?.reset({
+      id: uuid.v4(),
+      name: '',
+      description: ''
+    });
+    this.submitted= false;
+    this.isUpdate = false;
   }
 
 }

@@ -8,14 +8,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ChildComponent implements OnInit {
   @Input() categoriesList: any []  = [];
   @Output() deleteEvent = new EventEmitter<number>()
+  @Output() updateEvent = new EventEmitter<number>()
   constructor() { }
 
   ngOnInit(): void {
   }
 
   onDelete(index: number){
-    // console.log(index); 
     this.deleteEvent.emit(index);
+  }
+
+  onUpdate(index: number){
+    this.updateEvent.emit(index);
   }
 
 }
