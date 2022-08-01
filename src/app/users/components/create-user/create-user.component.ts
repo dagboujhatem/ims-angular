@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/http/user.service';
 
 @Component({
   selector: 'app-create-user',
@@ -10,7 +12,8 @@ export class CreateUserComponent implements OnInit {
 
   userForm? : FormGroup;
   submitted = false;
-  constructor() { }
+  constructor(private userService: UserService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.userForm = new FormGroup({
@@ -25,7 +28,12 @@ export class CreateUserComponent implements OnInit {
       return;
     }
     // Add new user using HTTP call (web service)
-
+    this.userService.addNewUser(this.userForm?.value)
+    .subscribe((response:any)=>{
+       this.router.navigateByUrl('/users')
+    },(error:any)=>{
+      console.log(error);
+    });
   }
 
 }

@@ -9,6 +9,7 @@ import { CreateProductComponent } from './pages/create-product/create-product.co
 import { UpdateProductComponent } from './pages/update-product/update-product.component';
 import { ListProductComponent } from './pages/list-product/list-product.component';
 import { ParentComponent } from './data-sharing/parent/parent.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'update-product/:id', component: UpdateProductComponent },
   { path: 'products', component: ListProductComponent },
   { path: 'categories', component: ParentComponent },
-  { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
+  { path: 'users', canActivate: [AuthGuard],loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
   { path: 'my-products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
   { path: '**', component: Page404Component}
 ];

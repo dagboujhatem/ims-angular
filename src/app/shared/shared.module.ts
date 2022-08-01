@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     // componentA
     // pipeA
     // DirectiveA
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
